@@ -20,21 +20,21 @@ services:
 #      - "443:443"
 #    restart: always
  
-#  srv-wordpress:
-#    depends_on:
-#      - srv-mariadb
-#    build:
-#      context: requirements/wordpress
-#      args:
-#        DOCKER_BUILDKIT: 1
-#    image: wordpress:0.1
-#    env_file: .env
-#    container_name: wordpress
-#    networks:
-#      - net-inception
-#    volumes:
-#      - vol-wordpress:/var/www/wordpress
-#    restart: always
+  srv-wordpress:
+    depends_on:
+      - srv-mariadb
+    build:
+      context: requirements/wordpress
+      args:
+        DOCKER_BUILDKIT: 1
+    image: wordpress:0.1
+    env_file: .env
+    container_name: wordpress
+    networks:
+      - net-inception
+    volumes:
+      - vol-wordpress:/var/www/wordpress
+    restart: always
   
   srv-mariadb:
     build:
@@ -48,18 +48,16 @@ services:
       - net-inception
     volumes:
       - vol-mariadb:/var/www/mysql
-    ports:
-      - "3306:3306"
     restart: always
 
 volumes:
-#  vol-wordpress:
-#    driver: local
-#    driver_opts:
-#      type: none
-#      o: bind
-#      device: /home/sangkkim/data/wordpress
-#    name: wordpress
+  vol-wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/sangkkim/data/wordpress
+    name: wordpress
   
   vol-mariadb:
     driver: local

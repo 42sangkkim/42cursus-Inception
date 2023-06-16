@@ -10,4 +10,5 @@ mariadb-install-db --user=mysql
 
 mariadbd-safe --user=mysql \
 	--basedir=/var/lib/mysql \
-	--datadir=/var/lib/mysql/data
+	--datadir=/var/lib/mysql/data \
+	--port=3306

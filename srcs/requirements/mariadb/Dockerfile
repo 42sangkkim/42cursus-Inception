@@ -8,7 +8,8 @@ RUN ["apk", "add", "mariadb", "mariadb-client"]
 
 # Change working directory : /root/
 WORKDIR /root
-# Copy configuration file
+# Modify configuration file
+RUN ["sed", "-i", "s/skip-networking//g", "/etc/my.cnf.d/mariadb-server.cnf"]
 # Copy init script
 COPY --chmod=500 ["tools/create_database_user.sh", "."]
 COPY --chmod=500 ["tools/init.sh", "."]
