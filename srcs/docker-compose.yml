@@ -1,0 +1,72 @@
+version: "3.7"
+
+services:
+#  srv-nginx:
+#    depends_on:
+#      - srv-mariadb
+#      - srv-wordpress
+#    build:
+#      context: requirements/nginx
+#      args:
+#        DOCKER_BUILDKIT: 1
+#    image: nginx:0.1
+#    env_file: .env
+#    container_name: nginx
+#    networks:
+#      - net-inception
+#    volumes:
+#      - vol-wordpress:/var/www/wordpress
+#    ports:
+#      - "443:443"
+#    restart: always
+ 
+#  srv-wordpress:
+#    depends_on:
+#      - srv-mariadb
+#    build:
+#      context: requirements/wordpress
+#      args:
+#        DOCKER_BUILDKIT: 1
+#    image: wordpress:0.1
+#    env_file: .env
+#    container_name: wordpress
+#    networks:
+#      - net-inception
+#    volumes:
+#      - vol-wordpress:/var/www/wordpress
+#    restart: always
+  
+  srv-mariadb:
+    build:
+      context: requirements/mariadb
+      args:
+        DOCKER_BUILDKIT: 1
+    image: mariadb:0.1
+    env_file: .env
+    container_name: mariadb
+    networks:
+      - net-inception
+    volumes:
+      - vol-mariadb:/var/www/mysql
+    restart: always
+
+volumes:
+#  vol-wordpress:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: /home/sangkkim/data/wordpress
+#    name: wordpress
+  
+  vol-mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/sangkkim/data/mariadb
+    name: mariadb
+
+networks:
+  net-inception:
+    name: inception
