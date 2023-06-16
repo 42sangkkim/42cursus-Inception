@@ -10,6 +10,7 @@ RUN ["apk", "add", "mariadb", "mariadb-client"]
 WORKDIR /root
 # Copy configuration file
 # Copy init script
+COPY --chmod=500 ["tools/create_database_user.sh", "."]
 COPY --chmod=500 ["tools/init.sh", "."]
 
 EXPOSE 3306

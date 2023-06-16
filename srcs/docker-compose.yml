@@ -48,6 +48,8 @@ services:
       - net-inception
     volumes:
       - vol-mariadb:/var/www/mysql
+    ports:
+      - "3306:3306"
     restart: always
 
 volumes:

@@ -9,10 +9,10 @@ all :
 	@docker-compose $(COMPOSE_FLAGS) up --build --detach
 
 clean :
-	@docker-compose $(COMPOSE_FLAGS) down --rmi
+	@docker-compose $(COMPOSE_FLAGS) down --rmi all
 
 fclean :
-	@docker-compose $(COMPOSE_FLAGS) down --rmi --volumes
+	@docker-compose $(COMPOSE_FLAGS) down --rmi all --volumes
 
 re :
 	@docker-compose $(COMPOSE_FLAGS) down --rmi --volumes
