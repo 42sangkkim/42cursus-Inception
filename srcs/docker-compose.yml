@@ -47,7 +47,7 @@ services:
     networks:
       - net-inception
     volumes:
-      - vol-mariadb:/var/www/mysql
+      - vol-mariadb:/var/lib/mysql
     restart: always
 
 volumes:
@@ -69,4 +69,5 @@ volumes:
 
 networks:
   net-inception:
+    driver: bridge
     name: inception
