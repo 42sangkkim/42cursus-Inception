@@ -14,7 +14,7 @@ RUN ["apk", "add", \
   "php81-gettext"   , "php81-ldap"      , "php81-ctype"     , \
   "php81-dom"       , "php81-simplexml" , "php81-fpm"       , \
   "php81-phar"      , "php81-pecl-xmlrpc", "php81-pecl-mcrypt", \
-  "mariadb-client"]
+  "mariadb-client"  , "dumb-init"]
 ADD ["https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar", "/usr/local/bin/wp"]
 RUN ["chmod", "+x", "/usr/local/bin/wp"]
 
@@ -27,4 +27,4 @@ COPY --chmod=500 ["tools/init.sh", "."]
 
 EXPOSE 9000
 VOLUME /var/www/wordpress
-CMD ["sh", "init.sh"]
+CMD ["dumb-init", "/root/init.sh"]
