@@ -14,6 +14,9 @@ RUN ["sed", "-i", "s/skip-networking//g", "/etc/my.cnf.d/mariadb-server.cnf"]
 COPY --chmod=500 ["tools/create_database_user.sh", "."]
 COPY --chmod=500 ["tools/init.sh", "."]
 
+# Add health check for wordpress db
+HEALTHCHEC
+
 EXPOSE 3306
 VOLUME /var/lib/mysql
 CMD ["dumb-init", "/root/init.sh"]

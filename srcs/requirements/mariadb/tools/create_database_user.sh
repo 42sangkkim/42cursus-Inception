@@ -10,12 +10,12 @@ done
 # Create DATABASE and USER
 mysql -u root << EOF
 CREATE DATABASE if not exists
-  ${MARIADB_DBNAME};
+  ${WORDPRESS_DBNAME};
 CREATE USER if not exists
-  '${MARIADB_USERNAME}'@'%'
-  identified by '${MARIADB_PASSWORD}';
+  '${WORDPRESS_USERNAME}'@'%'
+  identified by '${WORDPRESS_PASSWORD}';
 GRANT all privileges
-  on ${MARIADB_DBNAME}.*
-  to '${MARIADB_USERNAME}'@'%';
+  on ${WORDPRESS_DBNAME}.*
+  to '${WORDPRESS_USERNAME}'@'%';
 FLUSH PRIVILEGES;
 EOF
