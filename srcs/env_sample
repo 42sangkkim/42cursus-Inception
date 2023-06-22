@@ -1,16 +1,16 @@
 # Fill all values and rename this file to '.env'
 
 # DataBase
-MARIADB_DBNAME=wordpress
-MARIADB_USERNAME=wpuser
-MARIADB_PASSWORD=wppass
+MARIADB_WORDPRESS_DBNAME=wordpress
+MARIADB_WORDPRESS_USERNAME=wpuser
+MARIADB_WORDPRESS_PASSWORD=wppass
 
 # WordPress
-WORDPRESS_URL=sangkkim.42.fr
+WORDPRESS_DOMAIN=sangkkim.42.fr
 WORDPRESS_TITLE=Meow
 
 # WordPress Admin
-ADMIN_USERNAME=norminette
-ADMIN_PASSWORD=WeL0ve42Seoul
-ADMIN_EMAIL=norminet@42.fr
+WORDPRESS_ADMIN_USERNAME=norminette
+WORDPRESS_ADMIN_PASSWORD=WeL0ve42Seoul
+WORDPRESS_ADMIN_EMAIL=norminet@42.fr
 
