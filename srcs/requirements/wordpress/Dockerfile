@@ -23,7 +23,11 @@ WORKDIR /root
 # Set php-fpm network
 RUN ["sed", "-i", "s/127.0.0.1:9000/wordpress:9000/g", "/etc/php81/php-fpm.d/www.conf"]
 # Copy init script
-COPY --chmod=500 ["tools/init.sh", "."]
+COPY --chmod=505 ["tools/init.sh", "."]
+
+# Health check for php-fpm
+HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \
+  CMD netstat -tnlp | grep :9000
 
 EXPOSE 9000
 VOLUME /var/www/wordpress

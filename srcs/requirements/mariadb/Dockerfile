@@ -15,7 +15,11 @@ COPY --chmod=500 ["tools/create_database_user.sh", "."]
 COPY --chmod=500 ["tools/init.sh", "."]
 
 # Add health check for wordpress db
-HEALTHCHEC
+HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \
+  CMD mariadb-show --host=mariadb \
+        --user=$WORDPRESS_USERNAME \
+        --password=$WORDPRESS_PASSWORD \
+        $WORDPRESS_DBNAME
 
 EXPOSE 3306
 VOLUME /var/lib/mysql

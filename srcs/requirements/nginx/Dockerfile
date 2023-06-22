@@ -16,6 +16,10 @@ COPY ["conf/openssl.conf", "."]
 # Copy init script
 COPY --chmod=500 ["tools/init.sh", "."]
 
+# Health check for HTTPS port
+HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \
+  CMD netstat -tnlp | grep :443
+
 EXPOSE 443
 VOLUME /var/www/wordpress
 CMD ["dumb-init", "/root/init.sh"]
