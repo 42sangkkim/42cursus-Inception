@@ -24,7 +24,7 @@ WORKDIR /root
 RUN ["sed", "-i", "s/127.0.0.1:9000/wordpress:9000/g", "/etc/php81/php-fpm.d/www.conf"]
 # Copy init script
 COPY ["tools/init.sh", "."]
-CMD ["chmod", "500", "init.sh"]
+RUN ["chmod", "+x", "./init.sh"]
 
 # Health check for php-fpm
 HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \

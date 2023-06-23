@@ -12,9 +12,9 @@ WORKDIR /root
 RUN ["sed", "-i", "s/skip-networking//g", "/etc/my.cnf.d/mariadb-server.cnf"]
 # Copy init script
 COPY ["tools/create_database_user.sh", "."]
-CMD ["chmod", "500", "create_database_user.sh"]
+RUN ["chmod", "+x", "./create_database_user.sh"]
 COPY ["tools/init.sh", "."]
-CMD ["chmod", "500", "init.sh"]
+RUN ["chmod", "+x", "./init.sh"]
 
 # Add health check for wordpress db
 HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \

@@ -15,7 +15,7 @@ COPY ["conf/www.wordpress.conf", "/etc/nginx/http.d"]
 COPY ["conf/openssl.conf", "."]
 # Copy init script
 COPY ["tools/init.sh", "."]
-CMD ["chmod", "500", "init.sh"]
+RUN ["chmod", "+x", "./init.sh"]
 
 # Health check for HTTPS port
 HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \
