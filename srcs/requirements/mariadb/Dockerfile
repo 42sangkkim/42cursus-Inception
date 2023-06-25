@@ -11,9 +11,12 @@ WORKDIR /root
 # Modify configuration file
 RUN ["sed", "-i", "s/skip-networking//g", "/etc/my.cnf.d/mariadb-server.cnf"]
 # Copy init script
-COPY ["tools/create_database_user.sh", "."]
-RUN ["chmod", "+x", "./create_database_user.sh"]
+COPY ["tools/init_db.sh", "."]
+COPY ["tools/init_wordpress.sql", "."]
+COPY ["tools/init_security.sql", "."]
 COPY ["tools/init.sh", "."]
+
+RUN ["chmod", "+x", "./init_db.sh"]
 RUN ["chmod", "+x", "./init.sh"]
 
 # Add health check for wordpress db
