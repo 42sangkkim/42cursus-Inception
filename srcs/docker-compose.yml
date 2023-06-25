@@ -2,12 +2,10 @@ version: "3.7"
 
 services:
   srv-nginx:
-# Rules for image
     build: nginx
     image: nginx:0.1
     environment:
       WORDPRESS_DOMAIN: ${WORDPRESS_DOMAIN}
-# Rules for container    
     container_name: nginx
     networks:
       - net-inception
@@ -21,7 +19,6 @@ services:
     restart: always
  
   srv-wordpress:
-# Rules for image
     build: wordpress
     image: wordpress:0.1
     environment:
@@ -33,7 +30,9 @@ services:
       ADMIN_USERNAME: ${WORDPRESS_ADMIN_USERNAME}
       ADMIN_PASSWORD: ${WORDPRESS_ADMIN_PASSWORD}
       ADMIN_EMAIL: ${WORDPRESS_ADMIN_EMAIL}
-# Rules for container
+      USER_USERNAME: ${WORDPRESS_USER_USERNAME}
+      USER_PASSWORD: ${WORDPRESS_USER_PASSWORD}
+      USER_EMAIL: ${WORDPRESS_USER_EMAIL}
     container_name: wordpress
     networks:
       - net-inception
@@ -45,14 +44,12 @@ services:
     restart: always
 
   srv-mariadb:
-# Rules for image
     build: mariadb
     image: mariadb:0.1
     environment:
       WORDPRESS_DBNAME: ${MARIADB_WORDPRESS_DBNAME}
       WORDPRESS_USERNAME: ${MARIADB_WORDPRESS_USERNAME}
       WORDPRESS_PASSWORD: ${MARIADB_WORDPRESS_PASSWORD}
-# Rules for container
     container_name: mariadb
     networks:
       - net-inception

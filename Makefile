@@ -5,7 +5,7 @@ ENVIRONMENT_FILE := srcs/.env
 
 COMPOSE_FLAGS := --project-name $(PROJECT_NAME) --project-directory $(PROJECT_DIRECTORY) --file $(COMPOSE_FILE) --env-file $(ENVIRONMENT_FILE)
 
-.PHONY : all clean re up down top config
+.PHONY : all clean re up down top config init
 
 all :
 	@make up
@@ -28,3 +28,6 @@ top :
 
 config :
 	@docker-compose $(COMPOSE_FLAGS) config
+
+init :
+	srcs/requirements/tools/init-environments.sh
