@@ -8,15 +8,15 @@ mariadb-install-db --user=mysql \
 	--skip-test-db 
 
 
-echo "mariadb -u root << EOF\n" >> initialize_db.sh
+echo "mariadb -u root << EOF"   >> initialize_db.sh
 cat  init_wordpress.sql         >> initialize_db.sh
 echo "EOF"                      >> initialize_db.sh
 
-echo "mariadb -u root << EOF\n" >> initialize_db.sh
+echo "mariadb -u root << EOF"   >> initialize_db.sh
 cat  init_security.sql          >> initialize_db.sh
 echo "EOF"                      >> initialize_db.sh
 
-./initalize_db.sh
+./initialize_db.sh
 
 mariadbd-safe --user=mysql \
 	--basedir=/usr \
