@@ -1,10 +1,10 @@
 PROJECT_NAME := inception
 PROJECT_DIRECTORY := srcs/requirements
 COMPOSE_FILE := srcs/docker-compose.yml
-ENVIRONMENT_FILE := srcs/.env
+ENV_FILE := srcs/.env
 VOLUME_MOUNT := /home/sangkkim/data/mariadb /home/sangkkim/data/wordpress
 
-COMPOSE_FLAGS := --project-name $(PROJECT_NAME) --project-directory $(PROJECT_DIRECTORY) --file $(COMPOSE_FILE) --env-file $(ENVIRONMENT_FILE)
+COMPOSE_FLAGS := --project-name $(PROJECT_NAME) --project-directory $(PROJECT_DIRECTORY) --file $(COMPOSE_FILE) --env-file $(ENV_FILE)
 
 .PHONY : all clean re up down top config init
 
@@ -12,9 +12,11 @@ all : up
 
 clean : down
 
-re : down up
+re :
+	@make down
+	@make up
 
-up:
+up: ${ENV_FILE}
 	@mkdir -p ${VOLUME_MOUNT}
 	@docker-compose $(COMPOSE_FLAGS) up --build --detach
 
@@ -29,3 +31,6 @@ config :
 
 init :
 	@srcs/requirements/tools/init-environments.sh
+
+${ENV_FILE} : srcs/requirements/tools/init-environments.sh
+	@$<
