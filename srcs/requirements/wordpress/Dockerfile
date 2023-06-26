@@ -30,6 +30,4 @@ RUN ["chmod", "+x", "./init.sh"]
 HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \
   CMD netstat -tnlp | grep :9000
 
-EXPOSE 9000
-VOLUME /var/www/wordpress
 ENTRYPOINT ["dumb-init", "/root/init.sh"]

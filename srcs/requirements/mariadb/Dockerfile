@@ -24,6 +24,4 @@ HEALTHCHECK --interval=10s --timeout=10s --start-period=500ms --retries=3 \
         --password=$WORDPRESS_PASSWORD \
         $WORDPRESS_DBNAME
 
-EXPOSE 3306
-VOLUME /var/lib/mysql
 ENTRYPOINT ["dumb-init", "/root/init.sh"]
