@@ -14,7 +14,7 @@ clean : down
 
 re : down up
 
-up: ${ENVINRONMENT_FILE}
+up:
 	@mkdir -p ${VOLUME_MOUNT}
 	@docker-compose $(COMPOSE_FLAGS) up --build --detach
 
@@ -27,7 +27,5 @@ top :
 config :
 	@docker-compose $(COMPOSE_FLAGS) config
 
-init : ${ENVIRONMENT_FILE}
-
-${ENVIRONMENT_FILE} :
+init :
 	@srcs/requirements/tools/init-environments.sh
