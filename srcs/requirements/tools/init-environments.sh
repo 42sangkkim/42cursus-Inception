@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Get information for DataBase
-printf "Basic etting for MariaDB"
+printf "Basic etting for MariaDB\n"
 printf "Root password : "
 read MARIADB_ROOT_PASSWORD
 
-printf "\nCreate MariaDB database and user for WordPRess"
+printf "\nCreate MariaDB database and user for WordPRess\n"
 printf "DATABASE name : "
 read MARIADB_WORDPRESS_DBNAME
 printf "User name : "
@@ -14,14 +14,14 @@ printf "User password : "
 read MARIADB_WORDPRESS_PASSWORD
 
 # Get information for WordPress
-printf "\n\nBasic setting for WordPress web site"
+printf "\n\nBasic setting for WordPress web site\n"
 printf "Domain : "
 read WORDPRESS_DOMAIN
 printf "Title : "
 read WORDPRESS_TITLE
 
 # Get information for Admin account
-printf "\nCreate Admin account for WordPress"
+printf "\nCreate Admin account for WordPress\n"
 printf "Admin Username : "
 read WORDPRESS_ADMIN_USERNAME
 printf "Admin Password : "
@@ -30,7 +30,7 @@ printf "Admin Email : "
 read WORDPRESS_ADMIN_EMAIL
 
 # Get information for User account
-printf "\nCreate auser for WordPress"
+printf "\nCreate a user for WordPress\n"
 printf "User Username : "
 read WORDPRESS_USER_USERNAME
 printf "User Password : "

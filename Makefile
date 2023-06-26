@@ -8,18 +8,14 @@ COMPOSE_FLAGS := --project-name $(PROJECT_NAME) --project-directory $(PROJECT_DI
 
 .PHONY : all clean re up down top config init
 
-all :
-	@make up
+all : up
 
-clean :
-	@make down
+clean : down
 
-re :
-	@make down
-	@make up
+re : down up
 
 up: ${ENVINRONMENT_FILE}
-	mkdir -p ${VOLUME_MOUNT}
+	@mkdir -p ${VOLUME_MOUNT}
 	@docker-compose $(COMPOSE_FLAGS) up --build --detach
 
 down:
