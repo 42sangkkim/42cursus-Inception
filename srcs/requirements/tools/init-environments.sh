@@ -1,33 +1,41 @@
 #!/bin/bash
 
 # Get information for DataBase
-printf "DataBase name for wordpress : "
+printf "Basic etting for MariaDB"
+printf "Root password : "
+read MARIADB_ROOT_PASSWORD
+
+printf "\nCreate MariaDB database and user for WordPRess"
+printf "DATABASE name : "
 read MARIADB_WORDPRESS_DBNAME
-printf "MariaDB username for wordpress account : "
+printf "User name : "
 read MARIADB_WORDPRESS_USERNAME
-printf "MariaDB password for wordpress account : "
+printf "User password : "
 read MARIADB_WORDPRESS_PASSWORD
 
 # Get information for WordPress
-printf "WordPress Domain : "
+printf "\n\nBasic setting for WordPress web site"
+printf "Domain : "
 read WORDPRESS_DOMAIN
-printf "WordPress Title : "
+printf "Title : "
 read WORDPRESS_TITLE
 
 # Get information for Admin account
-printf "Admin name for WordPress : "
+printf "\nCreate Admin account for WordPress"
+printf "Admin Username : "
 read WORDPRESS_ADMIN_USERNAME
-printf "Admin password for WordPress : "
+printf "Admin Password : "
 read WORDPRESS_ADMIN_PASSWORD
-printf "Admin email for WordPress : "
+printf "Admin Email : "
 read WORDPRESS_ADMIN_EMAIL
 
 # Get information for User account
-printf "User name for WordPress : "
+printf "\nCreate auser for WordPress"
+printf "User Username : "
 read WORDPRESS_USER_USERNAME
-printf "User password for WordPress : "
+printf "User Password : "
 read WORDPRESS_USER_PASSWORD
-printf "User email for WordPress : "
+printf "User Email : "
 read WORDPRESS_USER_EMAIL
 
 # Create env file
@@ -35,6 +43,7 @@ cat > srcs/.env << EOF
 # Environment file for docker-compose
 
 # Config for DataBase
+MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
 MARIADB_WORDPRESS_DBNAME=${MARIADB_WORDPRESS_DBNAME}
 MARIADB_WORDPRESS_USERNAME=${MARIADB_WORDPRESS_USERNAME}
 MARIADB_WORDPRESS_PASSWORD=${MARIADB_WORDPRESS_PASSWORD}
