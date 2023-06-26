@@ -4,7 +4,7 @@
 mariadb-show -u root
 while [ $? -ne 0 ] ; do
 	sleep 0.5
-	mariadb-show -ut root
+	mariadb-show -u root
 done
 
 mariadb -u root << EOF
